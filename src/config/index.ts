@@ -9,15 +9,15 @@ abstract class AppConfig {
             console.error('Person base API URL is not set');
             process.exit(1);
         }
-        this.personBaseUrl = apiUrl;
+        this.personBaseUrl = personBaseUrl;
 
         const imageBaseUrl: string | undefined =
-            process.env.NEXT_PUBLIC_IMAGE_BASE_API_URL;
+            process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
         if (!imageBaseUrl) {
             console.error('Image base API URL is not set');
             process.exit(1);
         }
-        this.imageBaseUrl = apiKey;
+        this.imageBaseUrl = imageBaseUrl;
     }
 }
 
