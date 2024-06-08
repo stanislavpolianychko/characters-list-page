@@ -6,42 +6,55 @@ import AppConfig from '@/config';
 import PeopleResponse from '@/dto/peopleResponse';
 
 const PeopleList = () => {
+    const defaultPeopleResponseUrl = `${AppConfig.personBaseUrl}/people`;
+
     const [people, setPeople] = useState<PeopleResponse>();
-    const [currentUrl, serCurrentUrl] = useState<string>(
-        `${AppConfig.personBaseUrl}/people`,
+    const [currentUrl, setCurrentUrl] = useState<string>(
+        defaultPeopleResponseUrl,
     );
+    const [search, setSearch] = useState<string>('');
 
     useEffect(() => {
         const urlObj = new URL(currentUrl);
         const params = Object.fromEntries(urlObj.searchParams.entries());
 
-        ApiClient.getPeople(params)
+        ApiClient.getPeople(params, search)
             .then((response: PeopleResponse) => {
                 setPeople(response);
-                console.log(response);
             })
             .catch((error) => {
                 console.log(`Error occurred: ${error.message}`);
             });
-    }, [currentUrl]);
+    }, [currentUrl, search]);
 
     const handleNextPage = () => {
         if (people?.next === null) {
             return;
         }
-        serCurrentUrl(people?.next as string);
+        setCurrentUrl(people?.next as string);
     };
 
     const handlePreviousPage = () => {
         if (people!.previous === null) {
             return;
         }
-        serCurrentUrl(people?.previous as string);
+        setCurrentUrl(people?.previous as string);
+    };
+
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCurrentUrl(defaultPeopleResponseUrl);
+        setSearch(event.target.value);
     };
 
     return (
         <div>
-            {people?.results.map((person: Person, index: number) => (
+            <input
+                type="text"
+                value={search}
+                onChange={handleSearchChange}
+                placeholder="Search by name"
+            />
+            {people?.results?.map((person: Person, index: number) => (
                 <PersonListItem
                     key={index}
                     person={person}
