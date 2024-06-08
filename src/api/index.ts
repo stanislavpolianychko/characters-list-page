@@ -10,10 +10,11 @@ abstract class ApiClient {
 
     public static async getPeople(
         params?: Record<string, any>,
+        search?: string,
     ): Promise<PeopleResponse> {
         const response: AxiosResponse<PeopleResponse> =
             await this.apiAxiosClient.get<PeopleResponse>('/people', {
-                params,
+                params: { ...params, search },
             });
         return response.data;
     }
