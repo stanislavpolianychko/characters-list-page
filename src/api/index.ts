@@ -14,10 +14,15 @@ abstract class ApiClient {
         return response.data;
     }
 
-    public static async getPerson(id: number): Promise<Person> {
+    public static async getPerson(id: string): Promise<Person> {
         const response: AxiosResponse<Person> =
             await this.apiAxiosClient.get<Person>(`/people/${id}`);
+
         return response.data;
+    }
+
+    public static getPersonProfileImageUrl(id: string): string {
+        return `${AppConfig.imageBaseUrl}/assets/img/characters/${id}.jpg`;
     }
 }
 

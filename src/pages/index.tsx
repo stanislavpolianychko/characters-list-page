@@ -1,3 +1,5 @@
+import PeopleList from '@/components/PeopleList';
+
 export default function Home() {
-    return <>Hello world!</>;
+    return <PeopleList />;
 }
