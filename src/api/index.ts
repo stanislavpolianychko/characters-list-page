@@ -8,9 +8,13 @@ abstract class ApiClient {
         baseURL: AppConfig.personBaseUrl,
     });
 
-    public static async getPeople(): Promise<PeopleResponse> {
+    public static async getPeople(
+        params?: Record<string, any>,
+    ): Promise<PeopleResponse> {
         const response: AxiosResponse<PeopleResponse> =
-            await this.apiAxiosClient.get<PeopleResponse>('/people');
+            await this.apiAxiosClient.get<PeopleResponse>('/people', {
+                params,
+            });
         return response.data;
     }
 
