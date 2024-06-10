@@ -4,6 +4,9 @@ import ApiClient from '@/api';
 import PersonListItem from '@/components/PersonListItem';
 import AppConfig from '@/config';
 import PeopleResponse from '@/dto/peopleResponse';
+import useLoading from '@/hooks/useLoading';
+import ControlsBar from '@/components/ControlsBar';
+import { Box } from '@mui/system';
 
 const PeopleList = () => {
     const defaultPeopleResponseUrl = `${AppConfig.personBaseUrl}/people`;
@@ -41,33 +44,43 @@ const PeopleList = () => {
         setCurrentUrl(people?.previous as string);
     };
 
-    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCurrentUrl(defaultPeopleResponseUrl);
+    const handleSearchChange = (
+        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
         setSearch(event.target.value);
+
+        setTimeout(() => {
+            setCurrentUrl(defaultPeopleResponseUrl);
+        }, 500);
     };
 
     return (
-        <div>
-            <input
-                type="text"
-                value={search}
-                onChange={handleSearchChange}
-                placeholder="Search by name"
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: 'calc(100vh - 60px - 30px)', // Adjust according to your header and footer height
+                overflowY: 'auto',
+            }}
+        >
+            <ControlsBar
+                nextPageExists={!!people?.next}
+                previousPageExists={!!people?.previous}
+                onNextPage={handleNextPage}
+                onPreviousPage={handlePreviousPage}
+                search={search}
+                handleSearchChange={handleSearchChange}
             />
-            {people?.results?.map((person: Person, index: number) => (
-                <PersonListItem
-                    key={index}
-                    person={person}
-                    id={(index + 1).toString()}
-                />
-            ))}
-            <button onClick={handlePreviousPage} disabled={!people?.previous}>
-                Previous
-            </button>
-            <button onClick={handleNextPage} disabled={!people?.next}>
-                Next
-            </button>
-        </div>
+            <Box sx={{ overflowY: 'auto', flexGrow: 1, my: 2 }}>
+                {people?.results?.map((person: Person, index: number) => (
+                    <PersonListItem
+                        key={index}
+                        person={person}
+                        id={(index + 1).toString()}
+                    />
+                ))}
+            </Box>
+        </Box>
     );
 };
 

@@ -1,12 +1,31 @@
 import React from 'react';
+import { Box, Typography } from '@mui/material';
 
-const Footer = () => {
+const Footer: React.FC = () => {
     return (
-        <footer className="bg-blue-500 text-white p-4 mt-4">
-            <p className="text-sm">
-                &copy; {new Date().getFullYear()} My Website
-            </p>
-        </footer>
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '30px',
+                backgroundColor: 'white',
+                borderTop: '1px solid black',
+                boxShadow: '0 -2px 3px 1px rgba(0, 0, 0, .3)',
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                right: 0,
+            }}
+        >
+            <Typography
+                variant="body2"
+                color="black"
+                sx={{ marginLeft: '1rem' }}
+            >
+                {"LanguageSystem.getTranslation('poweredBy')"}
+            </Typography>
+        </Box>
     );
 };
 
