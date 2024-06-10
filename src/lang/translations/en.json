@@ -1,3 +1,7 @@
 {
-    "someKey": "someValue"
+    "headerNaming": "Naming can be there",
+    "previous": "Previous",
+    "next": "Next",
+    "search": "Search",
+    "footerLabel": "Completed by @staspolianychko"
 }
