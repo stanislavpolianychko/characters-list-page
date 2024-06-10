@@ -24,7 +24,11 @@ const PersonListItem: React.FC<PersonListItemProps> = ({ person, id }) => {
                 >
                     <Link href={Paths.UserProfile(id)} underline="none">
                         <CardContent>
-                            <Typography variant="h5" component="div">
+                            <Typography
+                                color="black"
+                                variant="h5"
+                                component="div"
+                            >
                                 {person.name}
                             </Typography>
                             <Typography color="text.secondary">

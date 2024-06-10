@@ -4,9 +4,9 @@ import ApiClient from '@/api';
 import PersonListItem from '@/components/PersonListItem';
 import AppConfig from '@/config';
 import PeopleResponse from '@/dto/peopleResponse';
-import useLoading from '@/hooks/useLoading';
 import ControlsBar from '@/components/ControlsBar';
 import { Box } from '@mui/system';
+import GradientBox from '@/components/GradientSection';
 
 const PeopleList = () => {
     const defaultPeopleResponseUrl = `${AppConfig.personBaseUrl}/people`;
@@ -26,6 +26,7 @@ const PeopleList = () => {
                 setPeople(response);
             })
             .catch((error) => {
+                // can be improved by using a state management
                 console.log(`Error occurred: ${error.message}`);
             });
     }, [currentUrl, search]);
@@ -55,11 +56,11 @@ const PeopleList = () => {
     };
 
     return (
-        <Box
+        <GradientBox
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                height: 'calc(100vh - 60px - 30px)', // Adjust according to your header and footer height
+                height: 'calc(100vh - 60px - 35px)', // Adjust according to your header and footer height
                 overflowY: 'auto',
             }}
         >
@@ -71,7 +72,7 @@ const PeopleList = () => {
                 search={search}
                 handleSearchChange={handleSearchChange}
             />
-            <Box sx={{ overflowY: 'auto', flexGrow: 1, my: 2 }}>
+            <Box sx={{ overflowY: 'auto', flexGrow: 1 }}>
                 {people?.results?.map((person: Person, index: number) => (
                     <PersonListItem
                         key={index}
@@ -80,7 +81,7 @@ const PeopleList = () => {
                     />
                 ))}
             </Box>
-        </Box>
+        </GradientBox>
     );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import LanguageSystem from '@/lang';
 
 const Footer: React.FC = () => {
     return (
@@ -23,7 +24,7 @@ const Footer: React.FC = () => {
                 color="black"
                 sx={{ marginLeft: '1rem' }}
             >
-                {"LanguageSystem.getTranslation('poweredBy')"}
+                {LanguageSystem.getTranslation('footerLabel')}
             </Typography>
         </Box>
     );

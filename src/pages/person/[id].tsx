@@ -1,7 +1,9 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import { Typography, Avatar } from '@mui/material';
 import ApiClient from '@/api';
 import Person from '@/dto/person';
+import GradientBox from '@/components/GradientSection';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const id = context.params?.id;
@@ -43,12 +45,26 @@ export default function UserIdPage({ pageData, id }: PageProps) {
     }
 
     return (
-        <div>
-            <img src={ApiClient.getPersonProfileImageUrl(id!)} />
-            <h1>{pageData.name}</h1>
-            <p>Height: {pageData.height}</p>
-            <p>Mass: {pageData.mass}</p>
-            <p>Hair Color: {pageData.hair_color}</p>
-        </div>
+        <GradientBox
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 2,
+                height: '100vh',
+            }}
+        >
+            <Avatar
+                src={ApiClient.getPersonProfileImageUrl(id!)}
+                sx={{ width: 80, height: 80 }}
+            />
+            <Typography variant="h4">{pageData.name}</Typography>
+            <Typography variant="body1">Height: {pageData.height}</Typography>
+            <Typography variant="body1">Mass: {pageData.mass}</Typography>
+            <Typography variant="body1">
+                Hair Color: {pageData.hair_color}
+            </Typography>
+        </GradientBox>
     );
 }

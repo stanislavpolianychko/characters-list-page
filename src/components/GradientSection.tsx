@@ -7,7 +7,7 @@ const gradientAnimation = keyframes`
 `;
 
 const GradientBox = styled(Box)(({ theme }) => ({
-    height: '100%',
+    height: '',
     background: 'linear-gradient(270deg, white, #FFDFFB 30%, white)',
     animation: `${gradientAnimation} 20s ease infinite`,
 }));
