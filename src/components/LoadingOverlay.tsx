@@ -1,6 +1,6 @@
 import React from 'react';
-import GradientBox from '@/components/GradientSection';
-import Logo from '@/components/logo/Logo';
+import GradientBox from '@/components/GradientBox';
+import Logo from '@/components/Logo';
 import useLoading from '@/hooks/useLoading';
 
 export function LoadingOverlay() {

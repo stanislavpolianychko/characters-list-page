@@ -6,7 +6,7 @@ import AppConfig from '@/config';
 import PeopleResponse from '@/dto/peopleResponse';
 import ControlsBar from '@/components/ControlsBar';
 import { Box } from '@mui/system';
-import GradientBox from '@/components/GradientSection';
+import GradientBox from '@/components/GradientBox';
 
 const PeopleList = () => {
     const defaultPeopleResponseUrl = `${AppConfig.personBaseUrl}/people`;

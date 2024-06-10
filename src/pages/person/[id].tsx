@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import { Typography, Avatar } from '@mui/material';
 import ApiClient from '@/api';
 import Person from '@/dto/person';
-import GradientBox from '@/components/GradientSection';
+import GradientBox from '@/components/GradientBox';
+import LanguageSystem from '@/lang';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const id = context.params?.id;
@@ -51,7 +52,7 @@ export default function UserIdPage({ pageData, id }: PageProps) {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                gap: 2,
+                gap: 1,
                 height: '100vh',
             }}
         >
@@ -60,11 +61,13 @@ export default function UserIdPage({ pageData, id }: PageProps) {
                 sx={{ width: 80, height: 80 }}
             />
             <Typography variant="h4">{pageData.name}</Typography>
-            <Typography variant="body1">Height: {pageData.height}</Typography>
-            <Typography variant="body1">Mass: {pageData.mass}</Typography>
+            <Typography variant="body1">{`${LanguageSystem.getTranslation('height')}: ${pageData.height}`}</Typography>
+            <Typography variant="body1">{`${LanguageSystem.getTranslation('mass')}: ${pageData.mass}`}</Typography>
             <Typography variant="body1">
-                Hair Color: {pageData.hair_color}
+                {`${LanguageSystem.getTranslation('hairColor')}: ${pageData.hair_color}`}
             </Typography>
         </GradientBox>
     );
 }
+
+// NOTE: just a dumb page, as an example of detailed view page logic

@@ -1,9 +1,7 @@
 .logo {
-    width: 48px;
-    height: 48px;
-    display: flex; /* add this line to use flexbox */
-    align-items: center; /* add this line to center child items vertically */
-    justify-content: center; /* add this line to center child items horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
     background-color: white;
     border: 1px solid black;

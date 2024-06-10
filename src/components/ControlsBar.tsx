@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import SearchInput from '@/components/SearchInput';
 import LanguageSystem from '@/lang';
-import { Box, color } from '@mui/system';
+import { Box } from '@mui/system';
 
 interface ControlsBarProps {
     nextPageExists: boolean;
@@ -28,7 +28,7 @@ const ControlsBar: React.FC<ControlsBarProps> = ({
             style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                padding: '0.5em',
+                padding: '5px',
                 borderBottom: '1px solid black',
                 boxShadow: '0 2px 3px 1px rgba(0, 0, 0, .3)',
             }}
@@ -55,7 +55,6 @@ const ControlsBar: React.FC<ControlsBarProps> = ({
                     onClick={onPreviousPage}
                     disabled={!previousPageExists}
                     variant="outlined"
-                    sx={{ color: 'black', borderColor: 'black' }}
                 >
                     {LanguageSystem.getTranslation('previous')}
                 </Button>
@@ -63,7 +62,6 @@ const ControlsBar: React.FC<ControlsBarProps> = ({
                     onClick={onNextPage}
                     disabled={!nextPageExists}
                     variant="outlined"
-                    sx={{ color: 'black', borderColor: 'black' }}
                 >
                     {LanguageSystem.getTranslation('next')}
                 </Button>

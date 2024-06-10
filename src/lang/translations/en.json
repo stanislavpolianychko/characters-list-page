@@ -3,5 +3,9 @@
     "previous": "Previous",
     "next": "Next",
     "search": "Search",
-    "footerLabel": "Completed by @staspolianychko"
+    "footerLabel": "Completed by @staspolianychko",
+    "height": "Height",
+    "mass": "Mass",
+    "hairColor": "Hair color",
+    "appName": "Eye color"
 }
