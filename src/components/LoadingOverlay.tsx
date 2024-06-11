@@ -2,6 +2,7 @@ import React from 'react';
 import GradientBox from '@/components/GradientBox';
 import Logo from '@/components/Logo';
 import useLoading from '@/hooks/useLoading';
+import LanguageSystem from '@/lang';
 
 function LoadingOverlay() {
     const { isLoading } = useLoading();
@@ -23,6 +24,7 @@ function LoadingOverlay() {
                 justifyContent: 'center',
                 zIndex: 9999,
             }}
+            aria-label={LanguageSystem.getTranslation('loading')}
         >
             <Logo isSpinning={true} />
         </GradientBox>

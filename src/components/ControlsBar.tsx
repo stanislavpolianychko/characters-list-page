@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { Button, useMediaQuery, Theme } from '@mui/material';
 import SearchInput from '@/components/SearchInput';
 import LanguageSystem from '@/lang';
 import { Box } from '@mui/system';
@@ -23,11 +23,17 @@ const ControlsBar: React.FC<ControlsBarProps> = ({
     search,
     handleSearchChange,
 }) => {
+    const isMobile = useMediaQuery((theme: Theme) =>
+        theme.breakpoints.down('sm'),
+    );
+
     return (
         <Box
             style={{
                 display: 'flex',
-                justifyContent: 'space-between',
+                flexDirection: isMobile ? 'column' : 'row',
+                gap: isMobile ? '10px' : '0',
+                justifyContent: 'space-around',
                 padding: '5px',
                 borderBottom: '1px solid black',
                 boxShadow: '0 2px 3px 1px rgba(0, 0, 0, .3)',
@@ -46,9 +52,10 @@ const ControlsBar: React.FC<ControlsBarProps> = ({
 
             <Box
                 display="flex"
-                justifyContent="space-between"
+                flexDirection={'row'}
+                justifyContent="center"
+                gap="10px"
                 alignItems="center"
-                width="45%"
                 height="100%"
             >
                 <Button

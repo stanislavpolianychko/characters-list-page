@@ -17,11 +17,7 @@ const Logo: React.FC<LogoProps> = ({ isSpinning }) => {
     const imageElement: React.JSX.Element = (
         <Image
             className={logoClass}
-            alt={
-                isSpinning
-                    ? LanguageSystem.getTranslation('appName')
-                    : "getTranslation('appName')"
-            }
+            alt={LanguageSystem.getTranslation('appName')}
             src={'/logo.svg'}
             width={48}
             height={48}
@@ -29,11 +25,19 @@ const Logo: React.FC<LogoProps> = ({ isSpinning }) => {
     );
 
     return (
-        <span className={logoClass}>
+        <span
+            className={logoClass}
+            aria-label={LanguageSystem.getTranslation('appName')}
+        >
             {isSpinning ? (
                 imageElement
             ) : (
-                <Link href={Paths.Home}>{imageElement}</Link>
+                <Link
+                    href={Paths.Home}
+                    aria-label={LanguageSystem.getTranslation('appName')}
+                >
+                    {imageElement}
+                </Link>
             )}
         </span>
     );

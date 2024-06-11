@@ -1,11 +1,12 @@
 {
-    "headerNaming": "Naming can be there",
-    "previous": "Previous",
+    "header": "Header",
+    "previous": "Prev",
     "next": "Next",
     "search": "Search",
     "footerLabel": "Completed by @staspolianychko",
     "height": "Height",
     "mass": "Mass",
     "hairColor": "Hair color",
-    "appName": "Eye color"
+    "appName": "Eye color",
+    "loading": "Loading..."
 }

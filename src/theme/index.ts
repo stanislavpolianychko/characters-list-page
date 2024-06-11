@@ -68,6 +68,18 @@ const theme = createTheme({
                 },
             },
         },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    border: '1px solid black',
+                    transition: 'transform 0.3s ease-in-out',
+                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.50)',
+                    '&:hover': {
+                        transform: 'translateY(-10px)',
+                    },
+                },
+            },
+        },
     },
     palette: {
         primary: {

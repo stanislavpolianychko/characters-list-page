@@ -14,6 +14,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ value, onChange }) => {
             value={value}
             onChange={(e) => onChange(e)}
             placeholder={LanguageSystem.getTranslation('search')}
+            aria-label={LanguageSystem.getTranslation('search')}
         />
     );
 };

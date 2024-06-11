@@ -2,6 +2,7 @@
  * `AppConfig` is an abstract class that provides a centralized location for configuration values.
  * It includes methods for loading configuration values from environment variables.
  *
+ * Define your new properties in and load them:
  * @property {string | undefined} personBaseUrl - The base URL for the person API. It's loaded from the `NEXT_PUBLIC_PERSON_BASE_API_URL` environment variable.
  * @property {string | undefined} imageBaseUrl - The base URL for the image API. It's loaded from the `NEXT_PUBLIC_IMAGE_BASE_URL` environment variable.
  */
