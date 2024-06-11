@@ -12,8 +12,12 @@ interface PersonListItemProps {
 const PersonListItem: React.FC<PersonListItemProps> = ({ person, id }) => {
     return (
         <Grow in={true}>
-            <Box sx={{ my: 2, p: 2 }}>
-                <Card tabIndex={0} aria-label={`Profile of ${person.name}`}>
+            <Box sx={{ p: 2 }}>
+                <Card
+                    tabIndex={0}
+                    aria-label={`Profile of ${person.name}`}
+                    role="listitem"
+                >
                     <Link href={Paths.UserProfile(id)} underline="none">
                         <CardContent>
                             <Typography

@@ -9,6 +9,7 @@ import { CssBaseline } from '@mui/material';
 import theme from '@/theme';
 import LoadingOverlay from '@/components/LoadingOverlay';
 import LoadingProvider from '@/contexts/LoadingContext';
+import GradientBox from '@/components/GradientBox';
 
 AppConfig.load();
 
@@ -18,9 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
             <LoadingProvider>
                 <LoadingOverlay />
                 <CssBaseline />
-                <Header />
-                <Component {...pageProps} />
-                <Footer />
+                <GradientBox sx={{}}>
+                    <Header />
+                    <Component {...pageProps} />
+                    <Footer />
+                </GradientBox>
             </LoadingProvider>
         </ThemeProvider>
     );

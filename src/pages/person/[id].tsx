@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { Typography, Avatar } from '@mui/material';
 import ApiClient from '@/api';
 import Person from '@/dto/person';
-import GradientBox from '@/components/GradientBox';
 import LanguageSystem from '@/lang';
+import { Box } from '@mui/system';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const id = context.params?.id;
@@ -46,7 +46,7 @@ export default function UserIdPage({ pageData, id }: PageProps) {
     }
 
     return (
-        <GradientBox
+        <Box
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -55,6 +55,8 @@ export default function UserIdPage({ pageData, id }: PageProps) {
                 gap: 1,
                 height: '100vh',
             }}
+            role="main"
+            aria-label={LanguageSystem.getTranslation('userProfile')}
         >
             <Avatar
                 src={ApiClient.getPersonProfileImageUrl(id!)}
@@ -66,8 +68,8 @@ export default function UserIdPage({ pageData, id }: PageProps) {
             <Typography variant="body1">
                 {`${LanguageSystem.getTranslation('hairColor')}: ${pageData.hair_color}`}
             </Typography>
-        </GradientBox>
+        </Box>
     );
 }
 
-// NOTE: just a dumb page, as an example of detailed view page logic
+// NOTE: just a dumb page, as an example of detailed view page

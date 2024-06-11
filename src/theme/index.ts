@@ -36,7 +36,7 @@ const theme = createTheme({
                 root: {
                     flexGrow: 1,
                     backgroundColor: 'white',
-                    padding: '15px',
+                    padding: '10px',
                     maxHeight: '100px',
                     boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .2)',
                     borderBottom: '1px solid black',
@@ -59,14 +59,6 @@ const theme = createTheme({
                     shrink: true,
                 },
             },
-            styleOverrides: {
-                root: {
-                    color: 'black',
-                    boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .2)',
-                    borderRadius: '4px',
-                    border: '1px solid black',
-                },
-            },
         },
         MuiCard: {
             styleOverrides: {
@@ -80,7 +72,25 @@ const theme = createTheme({
                 },
             },
         },
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.50)',
+                    color: 'black',
+                    '& fieldset': {
+                        borderColor: 'black',
+                    },
+                    '&:hover fieldset': {
+                        borderColor: 'black',
+                    },
+                    '&.Mui-focused fieldset': {
+                        borderColor: 'black',
+                    },
+                },
+            },
+        },
     },
+
     palette: {
         primary: {
             main: '#ffffff',

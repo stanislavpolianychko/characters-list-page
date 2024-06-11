@@ -28,6 +28,7 @@ const Logo: React.FC<LogoProps> = ({ isSpinning }) => {
         <span
             className={logoClass}
             aria-label={LanguageSystem.getTranslation('appName')}
+            role="img"
         >
             {isSpinning ? (
                 imageElement

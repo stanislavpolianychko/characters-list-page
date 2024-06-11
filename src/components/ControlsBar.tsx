@@ -27,18 +27,29 @@ const ControlsBar: React.FC<ControlsBarProps> = ({
         theme.breakpoints.down('sm'),
     );
 
+    const styles = {
+        box: {
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: isMobile ? '10px' : '0',
+            justifyContent: 'space-around',
+            padding: '5px',
+            borderBottom: '1px solid black',
+            boxShadow: '0 2px 3px 1px rgba(0, 0, 0, .3)',
+            height: isMobile ? '120px' : '80px',
+        },
+        innerBox: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            gap: '10px',
+            alignItems: 'center',
+            height: '100%',
+        },
+    };
+
     return (
-        <Box
-            style={{
-                display: 'flex',
-                flexDirection: isMobile ? 'column' : 'row',
-                gap: isMobile ? '10px' : '0',
-                justifyContent: 'space-around',
-                padding: '5px',
-                borderBottom: '1px solid black',
-                boxShadow: '0 2px 3px 1px rgba(0, 0, 0, .3)',
-            }}
-        >
+        <Box sx={styles.box}>
             <SearchInput
                 value={search}
                 onChange={(event) =>
@@ -48,20 +59,15 @@ const ControlsBar: React.FC<ControlsBarProps> = ({
                         >,
                     )
                 }
+                aria-label={LanguageSystem.getTranslation('search')}
             />
 
-            <Box
-                display="flex"
-                flexDirection={'row'}
-                justifyContent="center"
-                gap="10px"
-                alignItems="center"
-                height="100%"
-            >
+            <Box sx={styles.innerBox}>
                 <Button
                     onClick={onPreviousPage}
                     disabled={!previousPageExists}
                     variant="outlined"
+                    aria-label={LanguageSystem.getTranslation('previousPage')}
                 >
                     {LanguageSystem.getTranslation('previous')}
                 </Button>
@@ -69,6 +75,7 @@ const ControlsBar: React.FC<ControlsBarProps> = ({
                     onClick={onNextPage}
                     disabled={!nextPageExists}
                     variant="outlined"
+                    aria-label={LanguageSystem.getTranslation('nextPage')}
                 >
                     {LanguageSystem.getTranslation('next')}
                 </Button>
