@@ -1,5 +1,4 @@
 import PeopleList from '@/components/PeopleList';
-import useLoading from '@/hooks/useLoading';
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import ControlsBar from '@/components/ControlsBar';
@@ -7,6 +6,7 @@ import AppConfig from '@/config';
 import PeopleResponse from '@/dto/peopleResponse';
 import ApiClient from '@/api';
 import LanguageSystem from '@/lang';
+// import useLoading from '@/hooks/useLoading';
 
 const defaultPeopleResponseUrl = `${AppConfig.personBaseUrl}/people`;
 
@@ -15,11 +15,13 @@ export default function Home() {
     const [currentUrl, setCurrentUrl] = useState<string>(
         defaultPeopleResponseUrl,
     );
-    const { setIsLoading } = useLoading();
     const [search, setSearch] = useState<string>('');
 
+    // example of loading context usage is here:
+    // const { setIsLoading } = useLoading();
+
     useEffect(() => {
-        setIsLoading(true);
+        // setIsLoading(true);
         const urlObj = new URL(currentUrl);
         const params = Object.fromEntries(urlObj.searchParams.entries());
 
@@ -31,7 +33,7 @@ export default function Home() {
                 // can be improved by using a state management
                 console.log(`Error occurred: ${error.message}`);
             });
-        setIsLoading(false);
+        // setIsLoading(false);
     }, [currentUrl, search]);
 
     const handleNextPage = () => {

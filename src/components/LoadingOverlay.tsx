@@ -3,6 +3,7 @@ import Logo from '@/components/Logo';
 import useLoading from '@/hooks/useLoading';
 import LanguageSystem from '@/lang';
 import { Box } from '@mui/system';
+import GradientBox from '@/components/GradientBox';
 
 function LoadingOverlay() {
     const { isLoading } = useLoading();
@@ -26,13 +27,13 @@ function LoadingOverlay() {
     }
 
     return (
-        <Box
+        <GradientBox
             sx={styles.box}
             aria-label={LanguageSystem.getTranslation('loading')}
             role="status"
         >
             <Logo isSpinning={true} />
-        </Box>
+        </GradientBox>
     );
 }
 
