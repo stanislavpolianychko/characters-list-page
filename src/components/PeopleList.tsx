@@ -10,7 +10,6 @@ import GradientBox from '@/components/GradientBox';
 
 const PeopleList = () => {
     const defaultPeopleResponseUrl = `${AppConfig.personBaseUrl}/people`;
-
     const [people, setPeople] = useState<PeopleResponse>();
     const [currentUrl, setCurrentUrl] = useState<string>(
         defaultPeopleResponseUrl,
@@ -49,10 +48,7 @@ const PeopleList = () => {
         event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => {
         setSearch(event.target.value);
-
-        setTimeout(() => {
-            setCurrentUrl(defaultPeopleResponseUrl);
-        }, 500);
+        setCurrentUrl(defaultPeopleResponseUrl);
     };
 
     return (

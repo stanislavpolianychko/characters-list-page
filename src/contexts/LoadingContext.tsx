@@ -9,7 +9,7 @@ export const LoadingContext = createContext<LoadingContextType | undefined>(
     undefined,
 );
 
-export function LoadingProvider({ children }: { children: ReactNode }) {
+function LoadingProvider({ children }: { children: ReactNode }) {
     const [isLoading, setIsLoading] = useState(false);
 
     return (
@@ -18,3 +18,5 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
         </LoadingContext.Provider>
     );
 }
+
+export default LoadingProvider;

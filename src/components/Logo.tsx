@@ -22,7 +22,7 @@ const Logo: React.FC<LogoProps> = ({ isSpinning }) => {
                     ? LanguageSystem.getTranslation('appName')
                     : "getTranslation('appName')"
             }
-            src={'/pageee-logo.svg'}
+            src={'/logo.svg'}
             width={48}
             height={48}
         />

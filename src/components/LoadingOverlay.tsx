@@ -3,7 +3,7 @@ import GradientBox from '@/components/GradientBox';
 import Logo from '@/components/Logo';
 import useLoading from '@/hooks/useLoading';
 
-export function LoadingOverlay() {
+function LoadingOverlay() {
     const { isLoading } = useLoading();
 
     if (!isLoading) {
@@ -28,3 +28,5 @@ export function LoadingOverlay() {
         </GradientBox>
     );
 }
+
+export default LoadingOverlay;
