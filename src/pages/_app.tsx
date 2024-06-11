@@ -10,6 +10,7 @@ import theme from '@/theme';
 import LoadingOverlay from '@/components/LoadingOverlay';
 import LoadingProvider from '@/contexts/LoadingContext';
 import GradientBox from '@/components/GradientBox';
+import LanguageSystem from '@/lang';
 
 AppConfig.load();
 
@@ -19,7 +20,11 @@ function MyApp({ Component, pageProps }: AppProps) {
             <LoadingProvider>
                 <LoadingOverlay />
                 <CssBaseline />
-                <GradientBox sx={{}}>
+                <GradientBox
+                    sx={{}}
+                    role="main"
+                    aria-label={LanguageSystem.getTranslation('mainContent')}
+                >
                     <Header />
                     <Component {...pageProps} />
                     <Footer />
