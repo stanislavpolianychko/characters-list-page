@@ -1,3 +1,12 @@
 {
-    "someKey": "someValue"
+    "header": "Header",
+    "previous": "Prev",
+    "next": "Next",
+    "search": "Search",
+    "footerLabel": "Completed by @staspolianychko",
+    "height": "Height",
+    "mass": "Mass",
+    "hairColor": "Hair color",
+    "appName": "Eye color",
+    "loading": "Loading..."
 }

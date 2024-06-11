@@ -1,12 +1,16 @@
 import React from 'react';
+import { Container, Toolbar, Typography } from '@mui/material';
+import LanguageSystem from '@/lang';
 
-const Footer = () => {
+const Footer: React.FC = () => {
     return (
-        <footer className="bg-blue-500 text-white p-4 mt-4">
-            <p className="text-sm">
-                &copy; {new Date().getFullYear()} My Website
-            </p>
-        </footer>
+        <Container maxWidth="lg" component="footer" role="contentinfo">
+            <Toolbar>
+                <Typography variant="body2" color="black">
+                    {LanguageSystem.getTranslation('footerLabel')}
+                </Typography>
+            </Toolbar>
+        </Container>
     );
 };
 

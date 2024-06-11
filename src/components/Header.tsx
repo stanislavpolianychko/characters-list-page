@@ -1,10 +1,25 @@
 import React from 'react';
+import { AppBar, Toolbar } from '@mui/material';
+import Logo from '@/components/Logo';
+import LanguageSystem from '@/lang';
 
-const Header = () => {
+const Header: React.FC = () => {
+    const styles = {
+        toolbar: {
+            justifyContent: 'space-between',
+        },
+    };
+
     return (
-        <header className="bg-blue-500 text-white p-4">
-            <h1 className="text-xl">My Website</h1>
-        </header>
+        <AppBar
+            position="sticky"
+            aria-label={LanguageSystem.getTranslation('header')}
+            role="banner"
+        >
+            <Toolbar style={styles.toolbar}>
+                <Logo isSpinning={false} />
+            </Toolbar>
+        </AppBar>
     );
 };
 

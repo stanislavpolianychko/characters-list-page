@@ -1,7 +1,10 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import { Typography, Avatar } from '@mui/material';
 import ApiClient from '@/api';
 import Person from '@/dto/person';
+import LanguageSystem from '@/lang';
+import { Box } from '@mui/system';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const id = context.params?.id;
@@ -43,12 +46,30 @@ export default function UserIdPage({ pageData, id }: PageProps) {
     }
 
     return (
-        <div>
-            <img src={ApiClient.getPersonProfileImageUrl(id!)} />
-            <h1>{pageData.name}</h1>
-            <p>Height: {pageData.height}</p>
-            <p>Mass: {pageData.mass}</p>
-            <p>Hair Color: {pageData.hair_color}</p>
-        </div>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 1,
+                height: '100vh',
+            }}
+            role="main"
+            aria-label={LanguageSystem.getTranslation('userProfile')}
+        >
+            <Avatar
+                src={ApiClient.getPersonProfileImageUrl(id!)}
+                sx={{ width: 80, height: 80 }}
+            />
+            <Typography variant="h4">{pageData.name}</Typography>
+            <Typography variant="body1">{`${LanguageSystem.getTranslation('height')}: ${pageData.height}`}</Typography>
+            <Typography variant="body1">{`${LanguageSystem.getTranslation('mass')}: ${pageData.mass}`}</Typography>
+            <Typography variant="body1">
+                {`${LanguageSystem.getTranslation('hairColor')}: ${pageData.hair_color}`}
+            </Typography>
+        </Box>
     );
 }
+
+// NOTE: just a dumb page, as an example of detailed view page

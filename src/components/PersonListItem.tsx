@@ -1,6 +1,8 @@
 import React from 'react';
 import Person from '@/dto/person';
 import Paths from '@/paths';
+import { Card, CardContent, Typography, Link, Grow, Box } from '@mui/material';
+import LanguageSystem from '@/lang';
 
 interface PersonListItemProps {
     id: string;
@@ -9,17 +11,36 @@ interface PersonListItemProps {
 
 const PersonListItem: React.FC<PersonListItemProps> = ({ person, id }) => {
     return (
-        <a
-            href={Paths.UserProfile(id)}
-            className="p-4 border-2 border-gray-200 rounded-lg my-2"
-        >
-            <h2 className="text-xl font-bold">{person.name}</h2>
-            <p className="text-sm text-gray-600">Height: {person.height}</p>
-            <p className="text-sm text-gray-600">Mass: {person.mass}</p>
-            <p className="text-sm text-gray-600">
-                Hair Color: {person.hair_color}
-            </p>
-        </a>
+        <Grow in={true}>
+            <Box sx={{ p: 2 }}>
+                <Card
+                    tabIndex={0}
+                    aria-label={`Profile of ${person.name}`}
+                    role="listitem"
+                >
+                    <Link href={Paths.UserProfile(id)} underline="none">
+                        <CardContent>
+                            <Typography
+                                color="black"
+                                variant="h5"
+                                component="div"
+                            >
+                                {person.name}
+                            </Typography>
+                            <Typography color="text.secondary">
+                                {`${LanguageSystem.getTranslation('height')}: ${person.height}`}
+                            </Typography>
+                            <Typography color="text.secondary">
+                                {`${LanguageSystem.getTranslation('mass')}: ${person.mass}`}
+                            </Typography>
+                            <Typography color="text.secondary">
+                                {`${LanguageSystem.getTranslation('hairColor')}: ${person.hair_color}`}
+                            </Typography>
+                        </CardContent>
+                    </Link>
+                </Card>
+            </Box>
+        </Grow>
     );
 };
 
