@@ -14,6 +14,7 @@ const PeopleList: React.FC<PeopleListProps> = ({ people }) => {
         <>
             {people?.results?.length !== 0 && (
                 <Box
+                    sx={{ paddingBottom: '60px' }}
                     role="list"
                     aria-label={LanguageSystem.getTranslation('peopleList')}
                 >

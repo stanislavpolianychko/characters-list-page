@@ -4,9 +4,14 @@ import LanguageSystem from '@/lang';
 
 const Footer: React.FC = () => {
     return (
-        <Container maxWidth="lg" component="footer" role="contentinfo">
+        <Container maxWidth={false} component="footer" role="contentinfo">
             <Toolbar>
-                <Typography variant="body2" color="black">
+                <Typography
+                    component="footer"
+                    role="contentinfo"
+                    variant="body2"
+                    color="black"
+                >
                     {LanguageSystem.getTranslation('footerLabel')}
                 </Typography>
             </Toolbar>
