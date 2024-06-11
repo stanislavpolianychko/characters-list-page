@@ -48,6 +48,23 @@ const theme = createTheme({
                 root: {
                     color: 'black',
                     borderColor: 'black',
+                    boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .2)',
+                },
+            },
+        },
+        MuiTextField: {
+            defaultProps: {
+                variant: 'outlined',
+                InputLabelProps: {
+                    shrink: true,
+                },
+            },
+            styleOverrides: {
+                root: {
+                    color: 'black',
+                    boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .2)',
+                    borderRadius: '4px',
+                    border: '1px solid black',
                 },
             },
         },

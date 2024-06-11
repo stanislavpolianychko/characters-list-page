@@ -13,8 +13,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ value, onChange }) => {
             type="text"
             value={value}
             onChange={(e) => onChange(e)}
-            label={LanguageSystem.getTranslation('search')}
-            variant="outlined"
+            placeholder={LanguageSystem.getTranslation('search')}
         />
     );
 };
