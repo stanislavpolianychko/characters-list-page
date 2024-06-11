@@ -6,7 +6,7 @@ import AppConfig from '@/config';
 import PeopleResponse from '@/dto/peopleResponse';
 import ApiClient from '@/api';
 import LanguageSystem from '@/lang';
-// import useLoading from '@/hooks/useLoading';
+import useLoading from '@/hooks/useLoading';
 
 const defaultPeopleResponseUrl = `${AppConfig.personBaseUrl}/people`;
 
@@ -16,12 +16,17 @@ export default function Home() {
         defaultPeopleResponseUrl,
     );
     const [search, setSearch] = useState<string>('');
-
-    // example of loading context usage is here:
-    // const { setIsLoading } = useLoading();
+    const { setIsLoading } = useLoading();
 
     useEffect(() => {
-        // setIsLoading(true);
+        const loadedDate = localStorage.getItem('loadedDate');
+        const currentDate = new Date().toISOString().split('T')[0];
+
+        if (loadedDate == null || loadedDate != currentDate) {
+            setIsLoading(true);
+            localStorage.setItem('loadedDate', currentDate);
+        }
+
         const urlObj = new URL(currentUrl);
         const params = Object.fromEntries(urlObj.searchParams.entries());
 
@@ -30,10 +35,13 @@ export default function Home() {
                 setPeople(response);
             })
             .catch((error) => {
-                // can be improved by using a state management
                 console.log(`Error occurred: ${error.message}`);
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 2000);
             });
-        // setIsLoading(false);
     }, [currentUrl, search]);
 
     const handleNextPage = () => {
