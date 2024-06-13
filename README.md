@@ -29,7 +29,7 @@ cd characters-list-page
 yarn install
 ```
 
-4. Create a `.env.local` file in the root of the project and add the following environment variables:
+4. Create a `.env` file in the root of the project and add the following environment variables:
 
 ```bash
 NEXT_PUBLIC_PERSON_BASE_API_URL=https://swapi.py4e.com/api
